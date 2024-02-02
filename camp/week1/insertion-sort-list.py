@@ -3,27 +3,29 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+
 class Solution:
     def insertionSortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if head is None or head.next is None:
-            return head
+        if head == None:
+            return 
 
-        current = head
-        is_sorted = False
+        tempArr = []
+        temp = head
+        while temp is not None:
+            tempArr.append(temp.val)
+            temp = temp.next
 
-        while not is_sorted:
-            is_sorted = True
-            current = head
+        i = 0
+        tempArr.sort()
+        temp = head
+        while temp is not None:
+            temp.val = tempArr[i]
+            i = i + 1
+            temp = temp.next
 
-            while current.next:
-                if current.val > current.next.val:
-                    temp = current.val
-                    current.val = current.next.val
-                    current.next.val = temp
-                    is_sorted = False
-                current = current.next
+        return head
+        
 
-        return head  
 
 
 
